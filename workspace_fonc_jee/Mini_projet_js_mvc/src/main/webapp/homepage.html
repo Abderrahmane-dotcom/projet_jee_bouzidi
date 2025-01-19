@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet dev</title>
+        <!-- Include libraries -->
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/xml-formatter@3.6.3/dist/browser/xml-formatter-singleton.min.js"></script>
+		
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.js"></script> <!-- XML Parser -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script> <!-- XLS handling -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script> <!-- CSV parsing -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> <!-- jsPDF Core Library -->
+	<script src="https://cdn.jsdelivr.net/npm/jspdf-autotable"></script> <!-- jsPDF AutoTable Plugin -->
+	<script src="script.js"></script> <!-- Your custom script -->
+    
+    <link rel="stylesheet" href="styles.css">
+
+    
+
+</head>
+<body>
+    <div class="container">
+        <h1>Sélection de Données</h1>
+
+        <div class="form-group">
+		    <label for="databaseName">Nom de la base de données :</label>
+		    <input type="text" id="databaseName" placeholder="Entrez le nom de la base de données">
+		    <button id="validateDB" onclick="validateDatabase()">Valider</button>
+		</div>
+		
+		<div class="form-group" id="tablesSection" style="display: none;">
+		    <label for="tables">Tables :</label>
+		    <select id="tables" onchange="loadColumns()">
+		        <option value="">-- Sélectionnez une table --</option>
+		    </select>
+		</div>
+
+        
+        <!-- Section: Sélection des champs -->
+        <div class="form-group" id="columnsSection" style="display: none;">
+            <div id="columns"></div>
+        </div>
+
+        <!-- Section: Sélection du format -->
+        <div class="form-group">
+            <label for="formatSelect">Format d'affichage :</label>
+            <select id="formatSelect">
+                <option value="json" selected>JSON (par défaut)</option>
+                <option value="csv">CSV</option>
+                <option value="xml">XML</option>
+                <option value="pdf">PDF</option>
+                <option value="xls">XLS</option>
+            </select>
+        </div>
+        
+        <!-- Section: Affichage des données -->
+        <button id="fetchDataBtn" onclick="fetchData()">Récupérer les données</button>
+        
+        
+    </div>
+
+
+</body>
+</html>
